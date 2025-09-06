@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
     <link rel="stylesheet" href="style.css">
@@ -23,6 +27,104 @@
             <span id="week-day"></span>
         </div>
     </div>
+      <script>
+        const day=document.getElementById("day");
+        const month=document.getElementById("month");
+        const year=document.getElementById("year");
+        const hours=document.getElementById("hours");
+        const minutes=document.getElementById("minutes");
+        const seconds=document.getElementById("seconds");  
+        const weekDay=document.getElementById("week-day");     
+
+        let updateTime = ()=>{
+            let date =new Date();
+            let d=date.getDate();
+            let m= date.getMonth()+1;
+            let y=date.getFullYear();
+            let h=date.getHours();
+            let min=date.getMinutes();
+            let s=date.getSeconds();
+            let w=date.getDay();
+            switch(w){
+                case 0:
+                    w="Sunday";
+                    break;
+                case 1:
+                    w="Monday";
+                    break;
+                case 2:
+                    w="Tuesday";
+                    break;
+                case 3:
+                    w="Wednesday";
+                    break;
+                case 4:
+                    w="Thursday";
+                    break;
+                case 5:
+                    w="Friday";
+                    break;
+                case 6:
+                    w="Saturday";
+                    break;
+            }
+
+           switch(m){
+            case 1:
+                m="Jan";
+                break;
+            case 2:
+                m="Feb";
+                break;
+            case 3:
+                m="Mar";
+                break;
+            case 4:
+                m="Apr";
+                break;
+            case 5:
+                m="May";
+                break;
+            case 6:
+                m="Jun";
+                break;
+            case 7:
+                m="Jul";
+                break;
+            case 8:
+                m="Aug";
+                break;
+            case 9:
+                m="Sep";
+                break;
+            case 10:
+                m="Oct";
+                break;
+            case 11:
+                m="Nov";
+                break;
+            case 12:
+                m="Dec";
+                break;
+           }
+
+            if(d<10){
+                d="0"+d;
+            }
+           
+
+            month.innerText=m;
+             day.innerText=d;
+            year.innerText=y;
+            hours.innerText=h<10?"0"+h:h;
+            minutes.innerText=min<10?"0"+min:min;
+            seconds.innerText=s<10?"0"+s:s;
+            weekDay.innerText=w;
+
+        }
+        setInterval(updateTime,1000);
+        updateTime();
+    </script>
   
     
 </body>
